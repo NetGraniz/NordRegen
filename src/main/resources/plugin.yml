@@ -1,0 +1,15 @@
+name: NordRegen
+version: '1.0.0'
+main: dev.nordfjell.regen.NordRegenPlugin
+api-version: '1.21.11'
+authors: [Nord Fjell]
+description: Safely regenerates only the chunk selected by an administrator.
+commands:
+  regenchunk:
+    description: Regenerate the chunk selected at your current position.
+    usage: /regenchunk [confirm|cancel]
+    permission: nordregen.use
+permissions:
+  nordregen.use:
+    description: Allows selecting and regenerating a chunk.
+    default: op
