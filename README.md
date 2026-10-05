@@ -1,5 +1,8 @@
 # NordRegen
 
+> Release build and installation requirements: see [BUILDING.md](BUILDING.md).
+> Older local paths below describe historical test fixtures, not the release build.
+
 Minimal Paper plugin for regenerating exactly one selected chunk on Nord Fjell.
 
 ## Usage

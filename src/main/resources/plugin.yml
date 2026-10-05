@@ -1,5 +1,5 @@
 name: NordRegen
-version: '1.0.0'
+version: '${project.version}'
 main: dev.nordfjell.regen.NordRegenPlugin
 api-version: '1.21.11'
 authors: [Nord Fjell]

@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "dev.nordfjell"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:26.2.build.127-stable")
+    compileOnly("io.papermc.paper:paper-api:26.2.build.129-stable")
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -21,6 +21,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.processResources {
     filteringCharset = "UTF-8"
+    filesMatching("plugin.yml") { expand("project" to mapOf("version" to project.version)) }
 }
 
 tasks.jar {
