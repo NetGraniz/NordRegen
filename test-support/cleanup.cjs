@@ -5,7 +5,7 @@ assert(['Paper','Folia'].includes(platform));assert(root.startsWith('C:\\Users\\
 const server=path.join(root,'server'),project=path.resolve(__dirname,'..'),seed='C:\\Users\\artyo\\Documents\\Codex\\nordauth-test-20261007-'+platform.toLowerCase()+'\\server'
 fs.mkdirSync(path.join(server,'plugins'),{recursive:true})
 for(const name of ['server.jar','cache','libraries','eula.txt'])if(fs.existsSync(path.join(seed,name)))fs.cpSync(path.join(seed,name),path.join(server,name),{recursive:true})
-for(const name of ['NordRegen-2.0.0.jar','CleanupProbe.jar'])fs.copyFileSync(path.join(project,'target',name),path.join(server,'plugins',name))
+for(const name of ['NordRegen-2.0.1.jar','CleanupProbe.jar'])fs.copyFileSync(path.join(project,'target',name),path.join(server,'plugins',name))
 fs.writeFileSync(path.join(server,'server.properties'),'server-ip=127.0.0.1\nserver-port=25647\nonline-mode=false\nenforce-secure-profile=false\nview-distance=2\nsimulation-distance=2\nspawn-protection=0\nlevel-name=CleanupSynthetic\nlevel-type=minecraft:flat\n')
 let output='',exited=false,bot;const messages=[]
 const child=spawn(java,['-Dterminal.jline=false','-Dterminal.ansi=false','-Xms256M','-Xmx1400M','-jar','server.jar','nogui'],{cwd:server,windowsHide:true,stdio:['pipe','pipe','pipe']})

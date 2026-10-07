@@ -36,12 +36,13 @@ public class CleanupProbe extends JavaPlugin implements Listener {
             ArmorStand neighbor=w.spawn(new Location(w,bx+16.5,y+2,bz+6.5),ArmorStand.class); neighbor.setGravity(false);
             var permission=p.addAttachment(this); permission.setPermission("nordregen.use",false);
             var command=Bukkit.getPluginCommand("regenchunk");
+            if(Bukkit.getPluginCommand("clearlagchunk")!=null) throw new IllegalStateException("Unexpected alias registered");
             command.getExecutor().onCommand(p,command,"regenchunk",new String[0]);
             command.getExecutor().onCommand(p,command,"regenchunk",new String[]{"confirm"});
             permission.setPermission("nordregen.use",true);
-            p.performCommand("clearlagchunk"); p.performCommand("clearlagchunk cancel"); p.performCommand("clearlagchunk confirm");
+            p.performCommand("regenchunk"); p.performCommand("regenchunk cancel"); p.performCommand("regenchunk confirm");
             if(w.getBlockAt(bx+2,y,bz+2).getType()!=Material.PISTON) throw new IllegalStateException("Changed without confirmation");
-            p.performCommand("clearlagchunk"); p.performCommand("clearlagchunk confirm");
+            p.performCommand("regenchunk"); p.performCommand("regenchunk confirm");
             if(w.getBlockAt(bx+2,y,bz+2).getType()!=Material.PISTON) throw new IllegalStateException("Cleanup not paced");
             long started=System.nanoTime();
             p.getScheduler().runAtFixedRate(this,task -> {

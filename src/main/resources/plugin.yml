@@ -8,7 +8,6 @@ description: Paced destructive cleanup of one chunk without terrain generation.
 commands:
   regenchunk:
     description: Delete configured mechanisms and entities in your selected chunk.
-    aliases: [clearlagchunk]
     usage: /regenchunk [confirm|cancel]
     permission: nordregen.use
 permissions:

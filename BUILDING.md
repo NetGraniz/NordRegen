@@ -8,7 +8,7 @@ folder, private configuration, prebuilt old plugin, or machine-specific path is 
 
 From this project's root, run `mvn clean verify`, or on PowerShell run
 `./build.ps1`. The wrapper accepts `-MavenCommand /path/to/mvn`.
-The JAR is `target/NordRegen-2.0.0.jar`.
+The JAR is `target/NordRegen-2.0.1.jar`.
 Three JUnit tests cover typed configuration and safety limits; README.md describes runtime tests.
 
 

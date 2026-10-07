@@ -1,10 +1,10 @@
-# NordRegen 2.0.0 — chunk cleanup
+# NordRegen 2.0.1 — chunk cleanup
 
 One JAR for Paper 26.2 and Folia 26.2, JDK 25. **Breaking behavior change:** this plugin no longer regenerates terrain. It removes configured mechanisms and entities in one selected chunk. No temporary worlds, seed-based generation, network calls or WorldEdit dependency.
 
 ## Commands
 
-Stand in the problem chunk and use `/regenchunk` (alias `/clearlagchunk`). Review the coordinates and deletion list in chat. Use `/regenchunk confirm` within 45 seconds while still in the same chunk. You do NOT need to leave. `/regenchunk cancel` cancels a pending selection, not an already-running operation. Leaving and returning before confirmation is allowed; confirming in another chunk is refused. Permission `nordregen.use` defaults to operators and is also checked in the executor.
+Stand in the problem chunk and use `/regenchunk`. Review the coordinates and deletion list in chat. Use `/regenchunk confirm` within 45 seconds while still in the same chunk. You do NOT need to leave. `/regenchunk cancel` cancels a pending selection, not an already-running operation. Leaving and returning before confirmation is allowed; confirming in another chunk is refused. Permission `nordregen.use` defaults to operators and is also checked in the executor. No command aliases are registered.
 
 **Destructive operation:** matching containers/vehicles and their contents are permanently deleted without drops or automatic undo. Back up the world first. Legitimate machines matching the config are also removed: this is an administrator-selected cleanup, not automatic lag detection. Removing a trapdoor/block under a player may cause a fall. Players themselves are never deleted, even if config attempts to include PLAYER (invalid config disables the plugin).
 
@@ -20,4 +20,4 @@ The public `Chunk.getEntities()` enumeration occurs once and is **not** time-sli
 
 See [BUILDING.md](BUILDING.md). Maven tests cover configuration bounds, types, immutable sets and forbidden player deletion. `test-support/CleanupProbe.java` and `cleanup.cjs` provide synthetic loopback-only integration tests: executor permissions, cancellation, explicit confirmation while remaining in the chunk, paced work, targeted block/entity deletion, neighboring chunk preservation and untouched terrain/player/inventory. The helper must NEVER be installed on production. Runtime evidence is saved outside this repository.
 
-Only the release JAR belongs on the real server. Keep production config/world data private. Add `clearlagchunk` to any command allowlist if using the alias; existing `regenchunk` remains valid. Old 1.x releases implement regeneration and must not be kept alongside 2.x.
+Only the release JAR belongs on the real server. Keep production config/world data private. Existing `regenchunk` command allowlists remain valid. Old 1.x releases implement regeneration and must not be kept alongside 2.x.
