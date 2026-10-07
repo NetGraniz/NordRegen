@@ -1,0 +1,6 @@
+name: CleanupProbe
+version: '1'
+main: dev.nordfjell.tests.CleanupProbe
+api-version: '26.2'
+folia-supported: true
+depend: [NordRegen]

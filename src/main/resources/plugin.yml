@@ -1,15 +1,17 @@
 name: NordRegen
 version: '${project.version}'
 main: dev.nordfjell.regen.NordRegenPlugin
-api-version: '1.21.11'
+api-version: '26.2'
+folia-supported: true
 authors: [Nord Fjell]
-description: Safely regenerates only the chunk selected by an administrator.
+description: Paced destructive cleanup of one chunk without terrain generation.
 commands:
   regenchunk:
-    description: Regenerate the chunk selected at your current position.
+    description: Delete configured mechanisms and entities in your selected chunk.
+    aliases: [clearlagchunk]
     usage: /regenchunk [confirm|cancel]
     permission: nordregen.use
 permissions:
   nordregen.use:
-    description: Allows selecting and regenerating a chunk.
+    description: Allows destructive cleanup of a selected chunk.
     default: op

@@ -9,6 +9,6 @@ if ($QueueProject) {
 }
 & $MavenCommand -B -ntp -f (Join-Path $PSScriptRoot 'pom.xml') clean verify
 if ($LASTEXITCODE -ne 0) { throw 'NordRegen build or tests failed.' }
-$jar = Join-Path $PSScriptRoot 'target/NordRegen-1.0.1.jar'
+$jar = Join-Path $PSScriptRoot 'target/NordRegen-2.0.0.jar'
 if (-not (Test-Path -LiteralPath $jar -PathType Leaf)) { throw 'Expected release JAR missing.' }
 Get-FileHash -LiteralPath $jar -Algorithm SHA256
