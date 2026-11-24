@@ -51,3 +51,7 @@ Disable or shutdown interrupts remaining work without restoring anything already
 See [BUILDING.md](BUILDING.md).
 
 Install only the release JAR and keep production configuration and worlds private. Existing `regenchunk` command allowlists remain valid. Do not keep a 1.x regeneration JAR alongside 2.x.
+
+## License
+
+Current development on `main` is licensed under [GNU GPL v3.0 only](LICENSE). The latest published release remains available under the MIT License stated on its release page.
