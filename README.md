@@ -46,12 +46,8 @@ Entities entering after the snapshot and blocks placed behind the scan cursor ma
 
 Disable or shutdown interrupts remaining work without restoring anything already removed. Use a stopped-server upgrade, not hot loading or unloading.
 
-## Build and tests
+## Build
 
-See [BUILDING.md](BUILDING.md). Maven tests cover configuration bounds, types, immutable sets and forbidden player deletion.
-
-`test-support/CleanupProbe.java` and `cleanup.cjs` provide synthetic loopback integration checks: executor permissions, cancellation, confirmation while standing in the chunk, paced work, targeted block/entity deletion and preservation of neighboring chunks, unrelated terrain, players and player inventories.
-
-Never install the probe on production. Runtime evidence is stored outside this repository.
+See [BUILDING.md](BUILDING.md).
 
 Install only the release JAR and keep production configuration and worlds private. Existing `regenchunk` command allowlists remain valid. Do not keep a 1.x regeneration JAR alongside 2.x.
