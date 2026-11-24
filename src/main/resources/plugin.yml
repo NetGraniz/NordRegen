@@ -1,0 +1,16 @@
+name: NordRegen
+version: '${project.version}'
+main: dev.nordfjell.regen.NordRegenPlugin
+api-version: '26.2'
+folia-supported: true
+authors: [Nord Fjell]
+description: Paced destructive cleanup of one chunk without terrain generation.
+commands:
+  regenchunk:
+    description: Delete configured mechanisms and entities in your selected chunk.
+    usage: /regenchunk [confirm|cancel]
+    permission: nordregen.use
+permissions:
+  nordregen.use:
+    description: Allows destructive cleanup of a selected chunk.
+    default: op

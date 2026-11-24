@@ -1,0 +1,12 @@
+# Destructive ADMIN cleanup, not regeneration. No automatic undo.
+# Matching containers and their contents are deleted without drops.
+blocks: [REDSTONE_WIRE, REDSTONE_TORCH, REDSTONE_WALL_TORCH, REDSTONE_BLOCK, REPEATER, COMPARATOR, OBSERVER, PISTON, STICKY_PISTON, PISTON_HEAD, MOVING_PISTON, HOPPER, DISPENSER, DROPPER, LEVER, TRIPWIRE, TRIPWIRE_HOOK, DAYLIGHT_DETECTOR, NOTE_BLOCK, SCULK_SENSOR, CALIBRATED_SCULK_SENSOR]
+include-trapdoors: true
+include-buttons: true
+include-pressure-plates: true
+entities: [MINECART, CHEST_MINECART, HOPPER_MINECART, FURNACE_MINECART, TNT_MINECART, SPAWNER_MINECART, COMMAND_BLOCK_MINECART, ARMOR_STAND]
+# Restart after editing. Limits apply to checks, not just removed objects.
+block-checks-per-tick: 256
+entity-checks-per-tick: 8
+budget-microseconds: 750
+confirmation-seconds: 45
