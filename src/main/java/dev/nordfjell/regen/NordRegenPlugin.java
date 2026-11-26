@@ -26,8 +26,9 @@ public final class NordRegenPlugin extends JavaPlugin implements Listener {
             getLogger().severe("Invalid cleanup config: " + e.getMessage());
             getServer().getPluginManager().disablePlugin(this); return;
         }
-        Objects.requireNonNull(getCommand("regenchunk")).setExecutor(this::command);
-        getCommand("regenchunk").setTabCompleter((sender,command,alias,args) -> args.length == 1
+        PluginCommand regenCommand = Objects.requireNonNull(getCommand("regenchunk"));
+        regenCommand.setExecutor((sender, command, label, args) -> command(sender, label, args));
+        regenCommand.setTabCompleter((sender,command,alias,args) -> args.length == 1
             ? List.of("confirm","cancel").stream().filter(s -> s.startsWith(args[0].toLowerCase(Locale.ROOT))).toList() : List.of());
         getServer().getPluginManager().registerEvents(this,this);
         getLogger().info("Paced chunk cleanup enabled; no terrain generation.");
@@ -43,7 +44,7 @@ public final class NordRegenPlugin extends JavaPlugin implements Listener {
         // Server shutdown removes plugin tickets. Do not access foreign chunks here.
     }
     @EventHandler public void quit(PlayerQuitEvent event) { selections.remove(event.getPlayer().getUniqueId()); }
-    private boolean command(CommandSender sender, Command command, String label, String[] args) {
+    private boolean command(CommandSender sender, String label, String[] args) {
         if (!sender.hasPermission("nordregen.use")) { sender.sendMessage("You do not have permission."); return true; }
         if (!(sender instanceof Player player)) { sender.sendMessage("Only players can select a chunk."); return true; }
         if (!Bukkit.isOwnedByCurrentRegion(player)) return true;
@@ -96,7 +97,7 @@ public final class NordRegenPlugin extends JavaPlugin implements Listener {
         final AtomicBoolean cancelled = new AtomicBoolean();
         final AtomicInteger outstanding = new AtomicInteger(), removedEntities = new AtomicInteger();
         ScheduledTask task; Chunk chunk; Entity[] entities;
-        int entityIndex,blockIndex,removedBlocks; long lastRun; boolean ticket;
+        int entityIndex,blockIndex,removedBlocks; long lastRun; volatile boolean ticket;
         Job(UUID owner,World world,int x,int z) {
             this.owner=owner; this.world=world; this.x=x; this.z=z;
             minY=world.getMinHeight(); total=256*(world.getMaxHeight()-minY);

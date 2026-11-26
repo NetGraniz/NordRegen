@@ -1,4 +1,4 @@
-# NordRegen 2.0.1
+# NordRegen 2.0.2
 
 Removes configured mechanisms and entities from one selected chunk on Paper 26.2 or Folia 26.2. Both platforms use one JAR on JDK 25.
 
